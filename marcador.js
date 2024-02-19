@@ -34,6 +34,10 @@ class Marcador {
     marcadorFrontend.innerHTML = '';
     marcadorFrontend.append(ul);
   }
+
+  verpuntos() {
+    return this.#jugadores;
+  }
 }
 
 export default Marcador;

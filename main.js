@@ -13,7 +13,8 @@ const inGame = document.querySelector('.inGame');
 let tablero;
 
 buttonCreateTable.addEventListener('click', (e) => {
-  if (!inputDimensions.value) {
+  let numRondas = parseInt(document.getElementById('num-rondas').value);
+  if (!inputDimensions.value || numRondas < 1) {
     Toastify({
       text: "Debe indicar una dimensión válida",
       duration: 3000,
@@ -32,7 +33,6 @@ buttonCreateTable.addEventListener('click', (e) => {
     inputDimensions.focus();
     return false;
   }
-
   if (isNaN(inputDimensions.value)) {
     Toastify({
       text: "Debe introducir un número válido",
@@ -52,13 +52,12 @@ buttonCreateTable.addEventListener('click', (e) => {
     inputDimensions.focus();
     return false;
   }
-
   let checkMachine = document.getElementById('machine');
-  tablero = new Tablero(parseInt(inputDimensions.value),checkMachine.checked);
-  tablero.imprimir('tablero');
-
+  tablero = new Tablero(parseInt(inputDimensions.value),checkMachine.checked, numRondas);
+  tablero.imprimir();
   preGame.classList.toggle('hide');
   inGame.classList.toggle('hide');
+  
 });
 
 inputDimensions.addEventListener('keydown', () => {
@@ -79,6 +78,10 @@ resetButton.addEventListener('click', (e) => {
 
   preGame.classList.toggle('hide');
   inGame.classList.toggle('hide');
+  document.querySelector(".clearGameButton").classList.remove("hide");
+  document.querySelector(".clearGameButton2").classList.remove("hide");
+  let registro = document.getElementById("registroJugadas");
+  registro.innerHTML = '';
   inputDimensions.value = '';
   inputDimensions.focus();
 });

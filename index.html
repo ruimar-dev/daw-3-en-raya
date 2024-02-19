@@ -4,22 +4,33 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Tic Tac Toe</title>
   </head>
   <body>
-    <div class="preGame">
-      <label for="dimension">De qué tamaño quieres el tablero</label>
-      <input id="dimension" type="text" name="dimension">
-      <button id="createTable">Crear tablero</button>
-      <label for="machine"><input type="checkbox" name="machine" id="machine"> Jugar contra la máquina</label>
+    <div class="container">
+      <h1 class="title"><span class="tic">TIC</span> TAC <span class="toe">TOE</span></h1>
+      
+      <div class="preGame">
+        <p>Ponga la configuracion que quiera y dele a crear tablero para empezar el juego</p>
+        <label for="dimension">De qué tamaño quieres el tablero</label>
+        <input id="dimension" type="text" name="dimension">
+        <div class="machine">
+        <label for="machine">Jugar contra la máquina</label>
+        <input type="checkbox" name="machine" id="machine">
+        </div>
+        <label for="num-rondas">Número de rondas:</label>
+        <input type="number" id="num-rondas" min="1" value="1">
+        <button id="createTable">Crear tablero</button>
+      </div>
+      <div class="inGame hide">
+        <button id="resetGame">Reiniciar</button>
+        <button class="clearGameButton">Limpiar Tablero</button>
+      </div>
+      <div id="marcador"></div>
+      <div id="tablero"></div>
+      <div class="clearGame hide"><button class="clearGameButton2 clearGameButton">Volver a jugar</button></div>
+      <div id="registroJugadas"></div>
     </div>
-    <div class="inGame hide">
-      <button id="resetGame">Reiniciar</button>
-      <button class="clearGameButton">Limpiar Tablero</button>
-    </div>
-    <div id="marcador"></div>
-    <div id="tablero"></div>
-    <div class="clearGame"><button class="clearGameButton">Volver a jugar</button></div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
